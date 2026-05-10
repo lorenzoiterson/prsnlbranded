@@ -1,0 +1,603 @@
+"use client";
+
+import { useState } from "react";
+
+export default function Page() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("PRSNL Studio");
+  const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    instagram: "",
+    linkedin: "",
+    goal: "",
+    role: "",
+    revenue: "",
+    industry: "",
+  });
+
+  const openModal = (plan) => {
+    setSelectedPlan(plan);
+    setSubmitted(false);
+    setModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    document.body.style.overflow = "";
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (!form.firstName || !form.email) {
+      alert("Please fill name and email.");
+      return;
+    }
+    try {
+      await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, plan: selectedPlan }),
+      });
+    } catch (e) {}
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="prsnl">
+      <nav className="nav">
+        <div className="nav-logo">PRSNLBRANDED</div>
+        <div className="nav-links">
+          <a className="nav-link nav-icon" href="https://instagram.com/prsnlbranded" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a className="nav-link nav-icon" href="#" aria-label="YouTube" onClick={(e) => e.preventDefault()}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+          <a className="nav-link" href="https://visionacle.com" target="_blank" rel="noopener noreferrer">Mastermind</a>
+          <a className="nav-link" href="/roadmap">Get free roadmap</a>
+          <button className="nav-cta" onClick={() => openModal("PRSNL Studio")}>
+            Apply
+          </button>
+        </div>
+      </nav>
+
+      <div className="hero">
+        <div className="eyebrow">For founders, creators, operators</div>
+        <h1 className="h1">
+          We help entrepreneurs <i>build unforgettable personal brands.</i>
+        </h1>
+        <p className="lead">
+          Your personal brand is your most valuable asset. We build personal brands that match your level: discreet, intentional, and built to compound. Whether it's to tell your story, sell your product, or own your space, we help you build the brand that gets you there.
+        </p>
+        <div className="hero-ctas">
+          <button className="btn-main" onClick={() => openModal("PRSNL Studio")}>
+            Apply for a spot
+          </button>
+          <a href="/roadmap" className="btn-main btn-light">
+            Get free roadmap
+          </a>
+        </div>
+      </div>
+
+      <div className="why-section">
+        <div className="why-inner">
+          <div className="eyebrow">Why this matters</div>
+          <div className="why-grid">
+            <div className="why-block">
+              <div className="why-num">01</div>
+              <div className="why-title">Sell more of your existing offer</div>
+              <div className="why-desc">Your audience already trusts you. A real personal brand turns that trust into pipeline, deals, and revenue you don't have to chase.</div>
+            </div>
+            <div className="why-block">
+              <div className="why-num">02</div>
+              <div className="why-title">Attract inbound clients</div>
+              <div className="why-desc">Stop hunting. Start being found. The right brand makes the right people reach out to you — pre-qualified and ready to work.</div>
+            </div>
+            <div className="why-block">
+              <div className="why-num">03</div>
+              <div className="why-title">Become the go-to name</div>
+              <div className="why-desc">When people in your space have a problem you solve, your name should be the first they think of. That's what authority means.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="moodboard">
+        <div className="cell tall">
+          <img src="/images/house_cars.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Lifestyle</div>
+            <div className="cell-cap-s">Show your status</div>
+          </div>
+        </div>
+        <div className="cell">
+          <img src="/images/ferrari_work.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Behind the scenes</div>
+            <div className="cell-cap-s">Show your work</div>
+          </div>
+        </div>
+        <div className="cell tall">
+          <img src="/images/f1.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Environment</div>
+            <div className="cell-cap-s">Show your arena</div>
+          </div>
+        </div>
+        <div className="cell">
+          <img src="/images/podcast.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Talking head</div>
+            <div className="cell-cap-s">Show your voice</div>
+          </div>
+        </div>
+        <div className="cell">
+          <img src="/images/yacht.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Travel</div>
+            <div className="cell-cap-s">Show your reach</div>
+          </div>
+        </div>
+        <div className="cell">
+          <img src="/images/running.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Routine</div>
+            <div className="cell-cap-s">Show your discipline</div>
+          </div>
+        </div>
+        <div className="cell">
+          <img src="/images/g_wagon.jpg" alt="" />
+          <div className="cell-cap">
+            <div className="cell-cap-t">Workflow</div>
+            <div className="cell-cap-s">Show your system</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="eyebrow">The reality</div>
+        <div className="s-h2">Why most experts stay invisible.</div>
+        <div className="s-lead">
+          You are exceptional at what you do. The market does not know it. Sound familiar?
+        </div>
+        <div className="problems">
+          {[
+            "You post in waves. Three weeks on, three weeks silent.",
+            "You know what to do. You just never have the time to do it well.",
+            "Your content sounds like everyone else in your industry.",
+            "You hate the cheap, salesy creator playbook. So you do nothing.",
+            "You are losing deals to people with weaker substance and stronger presence.",
+          ].map((t, i) => (
+            <div key={i} className="problem">
+              <div className="problem-x">×</div>
+              <div className="problem-t">{t}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ background: "#0a0a0a" }}>
+        <img
+          src="/images/tuscany.jpg"
+          alt=""
+          className="banner-img"
+          style={{ filter: "brightness(0.7)" }}
+        />
+      </div>
+
+      <div className="section-wide dark">
+        <div className="container">
+          <div className="eyebrow">The approach</div>
+          <div className="s-h2" style={{ color: "#f5f2ec" }}>
+            Position. Produce.<br />Distribute.
+          </div>
+          <div className="s-lead">
+            A three-part system, executed weekly. The same operating model the names you respect have used to build their authority — done with discipline, not noise.
+          </div>
+          <div className="formula">
+            <div className="f-cell">
+              <div className="f-num">01</div>
+              <div className="f-t">Position</div>
+              <div className="f-d">Sharp positioning. Real story. Visual identity that holds.</div>
+            </div>
+            <div className="f-cell">
+              <div className="f-num">02</div>
+              <div className="f-t">Produce</div>
+              <div className="f-d">Long-form. Short-form. Newsletters. Consistently.</div>
+            </div>
+            <div className="f-cell">
+              <div className="f-num">03</div>
+              <div className="f-t">Distribute</div>
+              <div className="f-d">Organic compounding, with paid amplification when warranted.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="who-block">
+        <div className="who-photo">
+          <img src="/images/penthouse.jpg" alt="" />
+        </div>
+        <div className="who-text">
+          <div className="who-eyebrow">Who we are</div>
+          <div className="who-h">Operators, not gurus.</div>
+          <div className="who-d">
+            My name is Lorenzo Iterson. Five years building paid media at scale and digital offers from zero. Marketer for the Dutch Grand Prix at Circuit Zandvoort. Co-founder of Visionacle, an invite-only network for serious operators in Europe. We build personal brands the way we'd build them for ourselves.
+          </div>
+        </div>
+      </div>
+
+      <div className="process-section">
+        <div className="process-inner">
+          <div className="eyebrow">The process</div>
+          <div className="s-h2" style={{color:"#f5f2ec"}}>The individual steps of the PRSNLBRANDED experience.</div>
+          <div className="s-lead">Discreet. Intentional. Built to compound.</div>
+
+          <div className="timeline">
+            <div className="timeline-item left">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Application & alignment</div>
+                <div className="timeline-desc">Discovery call to align on vision, define your goals, and select the right tier for your situation.</div>
+              </div>
+            </div>
+
+            
+
+      <div className="pricing">
+        <div className="pricing-header">
+          <div className="eyebrow">Three ways in</div>
+          <div className="s-h2">Choose your level of involvement.</div>
+          <div className="s-lead">
+            From self-paced playbook to full-service done-for-you. Built for where you are right now.
+          </div>
+        </div>
+
+        <div className="pricing-grid">
+          <div className="plan">
+            <div className="plan-eyebrow">DIY · Self-paced</div>
+            <div className="plan-name">PRSNL Sprint</div>
+            <div className="plan-price">€297</div>
+            <div className="plan-period">one-time</div>
+            <div className="plan-desc">
+              The full system, in your hands. Self-paced, with direct access to me and the team for the moments it matters.
+            </div>
+            <ul className="plan-feats">
+              <li>Full personal brand playbook in Notion</li>
+              <li>Positioning, tone of voice, and content frameworks</li>
+              <li>30+ ready-to-use content templates</li>
+              <li>Hook formulas and post structures</li>
+              <li>Private Slack channel with the team</li>
+              <li>Direct access to me and my team</li>
+            </ul>
+            <button className="plan-btn" onClick={() => openModal("PRSNL Sprint")}>
+              Get started
+            </button>
+          </div>
+
+          <div className="plan dark">
+            <div className="plan-eyebrow">DWY · Most popular</div>
+            <div className="plan-name">PRSNL Studio</div>
+            <div className="plan-price">€997</div>
+            <div className="plan-period">per month</div>
+            <div className="plan-desc">
+              You record. <strong style={{color:"#fff"}}>We handle the rest.</strong> Strategy, scripts, editing, publishing — all done in our house style.
+            </div>
+            <ul className="plan-feats">
+              <li>Personal brand strategy and positioning</li>
+              <li>12 ready-to-record scripts per month</li>
+              <li><strong style={{color:"#fff"}}>Full editing in our house style</strong></li>
+              <li>Posting managed on your channels</li>
+              <li>Weekly alignment session</li>
+              <li>Monthly performance review</li>
+              <li>Direct access to me and the team via Slack</li>
+            </ul>
+            <button className="plan-btn" onClick={() => openModal("PRSNL Studio")}>
+              Apply for a spot
+            </button>
+          </div>
+
+          <div className="plan">
+            <div className="plan-eyebrow">DFY · By application</div>
+            <div className="plan-name">PRSNL Authority</div>
+            <div className="plan-price plan-price-na">Pricing on call</div>
+            <div className="plan-period">tailored monthly retainer</div>
+            <div className="plan-desc">
+              <strong>We come to you.</strong> One full day per month at your home or chosen location. End-to-end production, editing, and distribution.
+            </div>
+            <ul className="plan-feats">
+              <li>One full-day shoot per month, on location</li>
+              <li>Our crew comes to you</li>
+              <li>Full content production and editing</li>
+              <li>Multi-platform publishing managed</li>
+              <li>Paid amplification and PR included</li>
+              <li>LinkedIn ghostwriting</li>
+              <li>Weekly strategic call</li>
+              <li><strong>Visionacle Mastermind access included</strong></li>
+              <li>Direct access to me and the team via Slack</li>
+            </ul>
+            <button className="plan-btn" onClick={() => openModal("PRSNL Authority")}>
+              Apply to learn more
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="faq-section">
+        <div className="faq-inner">
+          <div className="eyebrow">FAQ</div>
+          <div className="s-h2">Common questions.</div>
+          <div className="faq-list">
+            {[
+              {
+                q: "How fast will I see results?",
+                a: "Most clients see meaningful traction within 60 to 90 days. Building authority is compound: the first month is foundation, the second is signal, the third is when inbound starts. We are not promising overnight virality.",
+              },
+              {
+                q: "Do I need to be on camera?",
+                a: "For PRSNL Studio and Authority, yes — short videos are the highest-leverage format right now. We make it as easy as possible: 30 minutes of recording per week, with scripts and direction provided. For Sprint, you choose your format.",
+              },
+              {
+                q: "What if I have no audience yet?",
+                a: "Most of our clients start from zero or near-zero. The system is designed to build from scratch. Existing audience helps but is not required.",
+              },
+              {
+                q: "Which platform should I focus on?",
+                a: "Depends on your goal and your industry. We map this in the strategy phase. LinkedIn for B2B authority, Instagram and TikTok for B2C and creator economy, X for tech and finance. Most clients run two platforms in sync.",
+              },
+              {
+                q: "What if I am too busy?",
+                a: "That is exactly why we built PRSNL Authority. We come to you one day per month and handle everything else. Your only job is to show up.",
+              },
+              {
+                q: "Can I cancel anytime?",
+                a: "Yes. Studio and Authority are month-to-month with no long-term contract. Cancel with 30 days notice.",
+              },
+              {
+                q: "Do you guarantee results?",
+                a: "No serious agency does, and the ones that do are lying. We guarantee execution, consistency, and quality. Results depend on your starting point, niche, and how well you show up.",
+              },
+              {
+                q: "Why should I trust you?",
+                a: "5 years of paid media at scale, marketing for the Dutch Grand Prix at Circuit Zandvoort, and co-founder of Visionacle (invite-only networking community). We have built brands and run campaigns that move millions.",
+              },
+            ].map((item, i) => (
+              <div key={i} className={`faq-item ${openFaq === i ? "open" : ""}`}>
+                <button className="faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                  <span>{item.q}</span>
+                  <span className="faq-icon">{openFaq === i ? "−" : "+"}</span>
+                </button>
+                {openFaq === i && <div className="faq-a">{item.a}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+<div className="timeline-item right">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Strategy & positioning</div>
+                <div className="timeline-desc">We define who you are, what you stand for, and how you'll be remembered. Bespoke positioning, not templates.</div>
+              </div>
+            </div>
+
+            <div className="timeline-item left">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Production & creation</div>
+                <div className="timeline-desc">Scripts, shoots, carousels, editorials. Either we hand you the playbook, or we come to you and capture it ourselves.</div>
+              </div>
+            </div>
+
+            <div className="timeline-item right">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Editing & alignment</div>
+                <div className="timeline-desc">Premium editing in our house style. Weekly review sessions to keep your brand sharp and consistent.</div>
+              </div>
+            </div>
+
+            <div className="timeline-item left">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Distribution & growth</div>
+                <div className="timeline-desc">Hand-managed publishing across your channels. Organic compounding, with paid amplification when ready.</div>
+              </div>
+            </div>
+
+            <div className="timeline-item right">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-title">Reporting & iteration</div>
+                <div className="timeline-desc">Monthly performance reviews. We refine the system based on what's working, not on guesses.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: "#0a0a0a" }}>
+        <img
+          src="/images/yacht.jpg"
+          alt=""
+          className="banner-img"
+          style={{ filter: "brightness(0.65)", maxHeight: 300 }}
+        />
+      </div>
+
+      <div className="contact-block">
+        <div className="contact-inner">
+          <div className="contact-eyebrow">Apply</div>
+          <div className="contact-h">
+            Built for the few. <i>Not the many.</i>
+          </div>
+          <div className="contact-d">
+            We take a small number of clients each month. Apply to see if we are a fit.
+          </div>
+          <button className="contact-btn" onClick={() => openModal("PRSNL Studio")}>
+            Apply now
+          </button>
+        </div>
+      </div>
+
+      <div className="disclaimer">
+        <div className="disclaimer-inner">
+          <div className="disclaimer-t">Disclaimer</div>
+          <div className="disclaimer-d">
+            <strong>Inspiration, not endorsement.</strong> Names like Alex Hormozi, Iman Gadzhi, Justin Welsh, Codie Sanchez, Sahil Bloom and Daniel Priestley are referenced as benchmarks of what world-class personal branding looks like. They are not our clients and we have no commercial affiliation with them. Our methodology is built on studying their public playbooks, plus our own 5+ years of paid media and content work.
+            <br /><br />
+            <strong>About the photography.</strong> All images on this page are used for moodboard and aesthetic reference only. They do not depict our clients, our team, or actual results. If you are the photographer or subject of any image and would like it removed, contact us and we will take it down within 48 hours.
+            <br /><br />
+            <strong>Results.</strong> Building a personal brand requires consistent effort. Results vary based on your starting point, niche, and execution. We do not guarantee specific outcomes.
+          </div>
+        </div>
+      </div>
+
+      <footer className="footer">
+        <div className="footer-l">PRSNLBRANDED</div>
+        <div className="footer-r">prsnlbranded.com</div>
+      </footer>
+
+      <div className={`modal ${modalOpen ? "open" : ""}`} onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
+        <div className="modal-inner">
+          {!submitted ? (
+            <>
+              <div className="mh">
+                <div className="mt">
+                  Apply for a spot.<i>{selectedPlan}</i>
+                </div>
+                <button className="mc" onClick={closeModal}>×</button>
+              </div>
+
+              <div className="frow">
+                <div className="fg">
+                  <label className="fl">First name</label>
+                  <input className="fi" type="text" name="firstName" value={form.firstName} onChange={handleChange} />
+                </div>
+                <div className="fg">
+                  <label className="fl">Last name</label>
+                  <input className="fi" type="text" name="lastName" value={form.lastName} onChange={handleChange} />
+                </div>
+              </div>
+
+              <div className="fg">
+                <label className="fl">Email</label>
+                <input className="fi" type="email" name="email" value={form.email} onChange={handleChange} />
+              </div>
+
+              <div className="frow">
+                <div className="fg">
+                  <label className="fl">Instagram</label>
+                  <input className="fi" type="text" name="instagram" placeholder="@handle" value={form.instagram} onChange={handleChange} />
+                </div>
+                <div className="fg">
+                  <label className="fl">LinkedIn</label>
+                  <input className="fi" type="text" name="linkedin" placeholder="/in/..." value={form.linkedin} onChange={handleChange} />
+                </div>
+              </div>
+
+              <div className="fg">
+                <label className="fl">Main goal</label>
+                <select className="fs" name="goal" value={form.goal} onChange={handleChange}>
+                  <option value="">Select your goal</option>
+                  <option>Grow audience and reach</option>
+                  <option>Generate inbound leads</option>
+                  <option>Position as industry authority</option>
+                  <option>Monetize existing audience</option>
+                  <option>Build personal brand from scratch</option>
+                  <option>Get speaking gigs and press</option>
+                </select>
+              </div>
+
+              <div className="fg">
+                <label className="fl">What you do</label>
+                <select className="fs" name="role" value={form.role} onChange={handleChange}>
+                  <option value="">Select role</option>
+                  <option>Founder / CEO</option>
+                  <option>Executive / C-suite</option>
+                  <option>Creator / Influencer</option>
+                  <option>Consultant / Freelancer</option>
+                  <option>Coach / Speaker</option>
+                  <option>Investor</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div className="fg">
+                <label className="fl">Annual revenue</label>
+                <select className="fs" name="revenue" value={form.revenue} onChange={handleChange}>
+                  <option value="">Select range</option>
+                  <option>Pre-revenue</option>
+                  <option>€0 – €50k</option>
+                  <option>€50k – €150k</option>
+                  <option>€150k – €500k</option>
+                  <option>€500k – €1M</option>
+                  <option>€1M – €5M</option>
+                  <option>€5M+</option>
+                </select>
+              </div>
+
+              <div className="fg">
+                <label className="fl">Industry</label>
+                <select className="fs" name="industry" value={form.industry} onChange={handleChange}>
+                  <option value="">Select industry</option>
+                  <option>SaaS / Tech</option>
+                  <option>E-commerce / DTC</option>
+                  <option>Marketing / Agency</option>
+                  <option>Finance / Investing</option>
+                  <option>Coaching / Education</option>
+                  <option>Real Estate</option>
+                  <option>Health / Fitness</option>
+                  <option>Creative / Media</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div className="fg">
+                <label className="fl">Plan interested in</label>
+                <div className="psel">
+                  {["PRSNL Sprint", "PRSNL Studio", "PRSNL Authority"].map((p) => (
+                    <div
+                      key={p}
+                      className={`popt ${selectedPlan === p ? "sel" : ""}`}
+                      onClick={() => setSelectedPlan(p)}
+                    >
+                      {p === "PRSNL Sprint" ? "Sprint" : p === "PRSNL Studio" ? "Studio" : "Authority"}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <button className="fbtn" onClick={handleSubmit}>
+                Submit application ↗
+              </button>
+            </>
+          ) : (
+            <div className="success show">
+              <div className="sicon">✓</div>
+              <div className="st">Application received.</div>
+              <div className="ss">
+                We review every application personally and reply within 48 hours.
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

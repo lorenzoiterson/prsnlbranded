@@ -1,0 +1,411 @@
+/* ============================
+   RESET & BASE
+   ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+html, body { font-family: 'Inter', sans-serif; background: #f7f6f2; color: #0a0a0a; font-size: 15px; line-height: 1.5; }
+button { font-family: 'Inter', sans-serif; cursor: pointer; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ============================
+   NAV
+   ============================ */
+.nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 32px; background: #f7f6f2;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-link {
+  font-size: 12px; font-weight: 500; color: #0a0a0a;
+  text-decoration: none; letter-spacing: 0.04em;
+  text-transform: uppercase; transition: opacity 0.15s;
+  display: inline-flex; align-items: center;
+}
+.nav-link:hover { opacity: 0.5; }
+.nav-icon { padding: 4px; }
+.nav-cta {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; background: #0a0a0a; color: #f7f6f2;
+  border: none; padding: 10px 18px; transition: background 0.2s;
+}
+.nav-cta:hover { background: #333; }
+
+/* ============================
+   HERO
+   ============================ */
+.hero { padding: 72px 32px 56px; max-width: 700px; margin: 0 auto; }
+.eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #999; margin-bottom: 20px;
+}
+.h1 { font-size: 44px; font-weight: 600; line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 20px; }
+.h1 i { font-style: italic; font-weight: 300; color: #777; }
+.lead { font-size: 15px; color: #666; line-height: 1.65; margin-bottom: 32px; max-width: 520px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-main {
+  padding: 15px 28px; background: #0a0a0a; color: #f7f6f2;
+  border: none; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s ease; cursor: pointer;
+}
+.btn-main:hover { background: #222; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.btn-main:active { transform: translateY(0); }
+.btn-light { background: transparent; color: #0a0a0a; border: 1px solid #0a0a0a; }
+.btn-light:hover { background: #0a0a0a; color: #f7f6f2; }
+
+/* ============================
+   MOODBOARD
+   ============================ */
+.moodboard-wrap { width: 100%; }
+.moodboard-pinterest { column-count: 3; column-gap: 3px; }
+.mb-cell {
+  position: relative; overflow: hidden; background: #111;
+  width: 100%; break-inside: avoid; margin-bottom: 3px; display: inline-block;
+}
+.mb-cell img {
+  width: 100%; display: block;
+  aspect-ratio: 4/5; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.mb-cell:hover img { transform: scale(1.04); }
+.mb-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 28px 10px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  color: #f7f6f2;
+}
+.mb-cap-t { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ============================
+   BRUNSON — PROBLEM
+   ============================ */
+.brunson-problem { padding: 80px 32px; max-width: 680px; margin: 0 auto; }
+.brunson-h { font-size: 36px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 32px; }
+.prob-list { display: flex; flex-direction: column; gap: 0; }
+.prob-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+  font-size: 14px; color: #333; line-height: 1.55;
+  transition: color 0.15s;
+}
+.prob-item:hover { color: #0a0a0a; }
+.prob-item:last-child { border-bottom: none; }
+.prob-x { color: #c00; font-size: 16px; flex-shrink: 0; width: 16px; margin-top: 1px; }
+
+/* ============================
+   BRUNSON — BIG DOMINO
+   ============================ */
+.domino-section { background: #0a0a0a; padding: 72px 32px; }
+.domino-inner { max-width: 700px; margin: 0 auto; }
+.domino-statement {
+  font-size: 26px; font-weight: 400; color: #f7f6f2;
+  line-height: 1.45; letter-spacing: -0.01em;
+  font-style: italic; margin-bottom: 16px;
+}
+.domino-sub { font-size: 14px; color: #666; font-weight: 500; letter-spacing: 0.02em; }
+
+/* ============================
+   BRUNSON — SOLUTION
+   ============================ */
+.solution-section { padding: 80px 32px; background: #f7f6f2; }
+.solution-inner { max-width: 1000px; margin: 0 auto; }
+.solution-lead { font-size: 15px; color: #555; line-height: 1.65; margin-bottom: 40px; max-width: 560px; }
+.solution-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+.sol-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); padding: 32px 28px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.sol-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.sol-card-featured { background: #0a0a0a; border-color: #0a0a0a; }
+.sol-num { font-size: 10px; font-weight: 600; color: #bbb; letter-spacing: 0.08em; margin-bottom: 12px; }
+.sol-card-featured .sol-num { color: #555; }
+.sol-title { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 10px; }
+.sol-card-featured .sol-title { color: #f7f6f2; }
+.sol-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px; }
+.sol-card-featured .sol-desc { color: #aaa; }
+.sol-platforms {
+  font-size: 10px; font-weight: 600; color: #999; letter-spacing: 0.08em;
+  text-transform: uppercase; padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.sol-card-featured .sol-platforms { color: #555; border-top-color: rgba(255,255,255,0.08); }
+
+/* ============================
+   HOW IT WORKS (dark)
+   ============================ */
+.section-wide { padding: 80px 32px; }
+.section-wide.dark { background: #0a0a0a; color: #f7f6f2; }
+.section-wide.dark .eyebrow { color: #555; }
+.container { max-width: 1000px; margin: 0 auto; }
+.s-h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 14px; }
+.s-lead { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 32px; }
+.formula { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px; }
+.f-cell { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; }
+.f-num { font-size: 10px; font-weight: 600; color: #555; letter-spacing: 0.08em; margin-bottom: 10px; }
+.f-t { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; color: #f7f6f2; margin-bottom: 8px; }
+.f-d { font-size: 13px; color: #888; line-height: 1.6; }
+
+/* ============================
+   PLATFORMS
+   ============================ */
+.platforms-section { background: #0a0a0a; padding: 80px 32px; }
+.platforms-inner { max-width: 1000px; margin: 0 auto; }
+.platforms-inner .eyebrow { color: #555; margin-bottom: 28px; }
+.platforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.plat-item { background: #111; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.04); transition: background 0.2s, transform 0.2s; }
+.plat-item:hover { background: #161616; transform: translateY(-2px); }
+.plat-icon-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.plat-icon { width: 22px; height: 22px; flex-shrink: 0; animation: platformPulse 3.2s ease-in-out infinite; }
+.plat-1 { animation-delay: 0s; color: #f7f6f2; }
+.plat-2 { animation-delay: 0.8s; color: #f7f6f2; }
+.plat-3 { animation-delay: 1.6s; color: #f7f6f2; }
+.plat-4 { animation-delay: 2.4s; color: #f7f6f2; }
+@keyframes platformPulse { 0%, 100% { opacity: 0.3; } 20%, 40% { opacity: 1; } 60% { opacity: 0.3; } }
+.plat-name { font-size: 16px; font-weight: 600; color: #f7f6f2; }
+.plat-best { font-size: 11px; color: #777; letter-spacing: 0.03em; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+.plat-cta-wrap { margin-top: 36px; display: flex; justify-content: center; }
+
+/* ============================
+   FOUNDER
+   ============================ */
+.team-section { padding: 80px 32px; background: #f7f6f2; }
+.team-inner { max-width: 1000px; margin: 0 auto; }
+.founder-card {
+  display: grid; grid-template-columns: 200px 1fr; gap: 28px;
+  align-items: center; background: #fff;
+  border: 1px solid rgba(0,0,0,0.07); padding: 28px;
+  margin-top: 36px; max-width: 620px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.founder-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.founder-photo { overflow: hidden; aspect-ratio: 4/5; }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s ease; }
+.founder-card:hover .founder-photo img { transform: scale(1.04); }
+.team-name { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: #0a0a0a; margin-bottom: 4px; }
+.team-role { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+.team-bio { font-size: 13px; color: #555; line-height: 1.6; }
+
+/* ============================
+   PRICING
+   ============================ */
+.pricing { padding: 80px 32px; max-width: 1100px; margin: 0 auto; }
+.pricing-header { max-width: 600px; margin: 0 auto 48px; text-align: center; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.pricing-two { grid-template-columns: 1fr 1fr; max-width: 860px; margin: 0 auto; }
+.plan { background: #fff; border: 1px solid rgba(0,0,0,0.08); padding: 32px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+.plan:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.plan.dark { background: #0a0a0a; color: #f7f6f2; border-color: #0a0a0a; }
+.plan.dark:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.plan-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+.plan.dark .plan-eyebrow { color: #555; }
+.plan-name { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+.plan-price { font-size: 38px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.plan-price-na { font-size: 24px; }
+.plan-period { font-size: 11px; color: #888; margin-top: 6px; margin-bottom: 20px; }
+.plan.dark .plan-period { color: #666; }
+.plan-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 24px; }
+.plan.dark .plan-desc { color: #aaa; }
+.plan-feats { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1; }
+.plan-feats li { font-size: 12px; color: #444; line-height: 1.4; padding-left: 16px; position: relative; }
+.plan-feats li::before { content: "✓"; position: absolute; left: 0; color: #0a0a0a; font-weight: 600; }
+.plan.dark .plan-feats li { color: #ccc; }
+.plan.dark .plan-feats li::before { color: #f7f6f2; }
+.plan-btn { background: transparent; border: 1px solid #0a0a0a; color: #0a0a0a; padding: 14px 24px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; width: 100%; margin-top: auto; transition: all 0.2s; }
+.plan-btn:hover { background: #0a0a0a; color: #f7f6f2; }
+.plan.dark .plan-btn { border-color: #f7f6f2; color: #f7f6f2; }
+.plan.dark .plan-btn:hover { background: #f7f6f2; color: #0a0a0a; }
+
+/* ============================
+   FAQ
+   ============================ */
+.faq-section { padding: 80px 32px; max-width: 700px; margin: 0 auto; }
+.faq-list { margin-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-q { width: 100%; background: transparent; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #0a0a0a; text-align: left; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color 0.15s; }
+.faq-q:hover { color: #555; }
+.faq-icon { font-size: 20px; font-weight: 300; color: #bbb; width: 20px; text-align: center; flex-shrink: 0; }
+.faq-item.open .faq-icon { color: #0a0a0a; }
+.faq-a { font-size: 13px; color: #666; line-height: 1.65; padding: 0 0 20px 0; max-width: 580px; }
+
+/* ============================
+   CONTACT
+   ============================ */
+.banner-img { display: block; width: 100%; max-height: 320px; object-fit: cover; }
+.contact-block { padding: 80px 32px; text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+.contact-h { font-size: 36px; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 14px; }
+.contact-h i { font-style: italic; font-weight: 300; color: #999; }
+.contact-d { font-size: 14px; color: #666; margin-bottom: 28px; line-height: 1.55; }
+.contact-btn { background: #0a0a0a; color: #f7f6f2; border: none; padding: 16px 36px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.2s; }
+.contact-btn:hover { background: #333; transform: translateY(-2px); }
+
+/* ============================
+   FOOTER + DISCLAIMER
+   ============================ */
+.disclaimer-section { padding: 32px 32px; max-width: 700px; margin: 0 auto; border-top: 1px solid rgba(0,0,0,0.06); }
+.disclaimer-inner p { font-size: 11px; color: #999; line-height: 1.55; margin-bottom: 10px; }
+.disclaimer-inner strong { color: #666; font-weight: 600; }
+.footer { padding: 28px 32px; border-top: 1px solid rgba(0,0,0,0.06); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; }
+.footer-sub { color: #999; font-weight: 400; letter-spacing: 0; }
+
+/* ============================
+   MODAL
+   ============================ */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1000; display: flex; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
+.modal { background: #f7f6f2; max-width: 460px; width: 100%; padding: 36px 28px; position: relative; border: 1px solid rgba(0,0,0,0.08); }
+.modal-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border: none; background: transparent; font-size: 22px; font-weight: 300; color: #888; cursor: pointer; }
+.modal-d { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 20px; }
+.modal input, .modal select { width: 100%; padding: 13px 14px; border: 1px solid rgba(0,0,0,0.12); background: #fff; font-family: 'Inter', sans-serif; font-size: 14px; color: #0a0a0a; outline: none; margin-bottom: 8px; border-radius: 0; box-sizing: border-box; transition: border-color 0.15s; }
+.modal input:focus, .modal select:focus { border-color: #0a0a0a; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.form-grid input { margin-bottom: 0; }
+.modal-submit { background: #0a0a0a; color: #f7f6f2; border: none; padding: 14px 24px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; width: 100%; margin-top: 12px; transition: background 0.2s; }
+.modal-submit:hover { background: #333; }
+.modal-success { text-align: center; padding: 24px 0; }
+.modal-success-h { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+.modal-success p { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+
+/* ============================
+   ROADMAP PAGE
+   ============================ */
+.rm-wrap { background: #f7f6f2; min-height: 100vh; }
+.rm-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 64px); }
+.rm-photo { background: #0a0a0a; overflow: hidden; }
+.rm-photo img { width: 100%; height: 100%; object-fit: cover; }
+.rm-form-side { padding: 56px 48px; display: flex; align-items: center; }
+.rm-form-inner { max-width: 440px; width: 100%; }
+.rm-h1 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; line-height: 1.1; color: #0a0a0a; margin: 14px 0 14px; }
+.rm-h1 i { font-style: italic; font-weight: 400; color: #999; }
+.rm-lead { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 20px; }
+.rm-bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+.rm-bullets li { font-size: 13px; color: #333; line-height: 1.5; padding: 7px 0 7px 20px; position: relative; }
+.rm-bullets li::before { content: "→"; position: absolute; left: 0; color: #0a0a0a; font-weight: 500; }
+.rm-form { display: flex; flex-direction: column; gap: 8px; }
+.rm-form input, .rm-form select { width: 100%; padding: 13px 14px; border: 1px solid rgba(0,0,0,0.12); border-radius: 0; background: #fff; font-family: 'Inter', sans-serif; font-size: 14px; color: #0a0a0a; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+.rm-form input:focus, .rm-form select:focus { border-color: #0a0a0a; }
+.rm-form .btn-main { margin-top: 6px; width: 100%; }
+.rm-disclaimer { font-size: 11px; color: #888; text-align: center; margin-top: 10px; }
+.rm-error { background: #fee; border: 1px solid #f88; color: #c00; padding: 10px 12px; font-size: 13px; }
+.ty-wrap { padding: 72px 24px; }
+.ty-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.ty-vsl { width: 100%; max-width: 640px; margin: 0 auto 48px; background: #0a0a0a; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.ty-vsl-inner { text-align: center; color: #f7f6f2; }
+.ty-vsl-icon { font-size: 40px; opacity: 0.25; margin-bottom: 10px; }
+.ty-vsl-label { font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #f7f6f2; opacity: 0.4; margin-bottom: 6px; }
+.ty-vsl-sub { font-size: 11px; color: #888; }
+.ty-schedule { max-width: 580px; margin: 0 auto 28px; text-align: center; }
+.ty-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+.ty-card-h { font-size: 28px; font-weight: 600; letter-spacing: -0.025em; margin-bottom: 10px; }
+.ty-card-d { font-size: 14px; color: #555; line-height: 1.6; }
+.ty-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); padding: 28px; margin-top: 28px; text-align: left; }
+.ty-card .btn-main { display: inline-block; margin-top: 16px; }
+.ty-divider { height: 20px; }
+
+/* ============================
+   RESPONSIVE — 900px
+   ============================ */
+@media (max-width: 900px) {
+  .pricing-two { grid-template-columns: 1fr; }
+  .solution-grid { grid-template-columns: 1fr; }
+  .rm-grid { grid-template-columns: 1fr; }
+  .rm-photo { min-height: 200px; max-height: 240px; }
+  .rm-form-side { padding: 36px 24px; }
+  .formula { grid-template-columns: 1fr; gap: 20px; }
+  .platforms-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================
+   RESPONSIVE — 720px (mobile)
+   ============================ */
+@media (max-width: 720px) {
+  /* NAV */
+  .nav { padding: 14px 16px; }
+  .nav-logo { font-size: 11px; letter-spacing: 0.12em; }
+  .nav-links { gap: 8px; }
+  .nav-link:not(.nav-icon) { display: none; }
+  .nav-cta { padding: 9px 14px; font-size: 10px; }
+
+  /* HERO */
+  .hero { padding: 36px 16px 28px; }
+  .h1 { font-size: 28px; line-height: 1.08; }
+  .lead { font-size: 14px; margin-bottom: 22px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 8px; }
+  .hero-ctas .btn-main, .hero-ctas .btn-light { width: 100%; padding: 14px 20px; }
+
+  /* MOODBOARD */
+  .moodboard-pinterest { column-count: 2; column-gap: 3px; }
+  .mb-cell img { aspect-ratio: 3/4; }
+  .mb-cap { padding: 20px 8px 8px; }
+  .mb-cap-t { font-size: 9px; }
+
+  /* PROBLEM */
+  .brunson-problem { padding: 48px 16px; }
+  .brunson-h { font-size: 26px; }
+  .prob-item { font-size: 13px; gap: 12px; padding: 14px 0; }
+
+  /* DOMINO */
+  .domino-section { padding: 48px 16px; }
+  .domino-statement { font-size: 20px; }
+
+  /* SOLUTION */
+  .solution-section { padding: 48px 16px; }
+  .solution-grid { grid-template-columns: 1fr; gap: 3px; }
+  .sol-card { padding: 24px 20px; }
+  .sol-title { font-size: 18px; }
+
+  /* HOW IT WORKS */
+  .section-wide { padding: 48px 16px; }
+  .s-h2 { font-size: 24px; }
+  .formula { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+
+  /* PLATFORMS */
+  .platforms-section { padding: 48px 16px; }
+  .platforms-grid { grid-template-columns: 1fr; gap: 2px; }
+  .plat-item { padding: 22px 18px; }
+
+  /* FOUNDER */
+  .team-section { padding: 48px 16px; }
+  .founder-card { grid-template-columns: 110px 1fr; gap: 16px; padding: 18px; margin-top: 24px; }
+  .team-name { font-size: 16px; }
+  .team-bio { font-size: 12px; }
+
+  /* PRICING */
+  .pricing { padding: 48px 16px; }
+  .pricing-two { grid-template-columns: 1fr; }
+  .plan { padding: 24px 20px; }
+  .plan-price { font-size: 32px; }
+  .plan-btn { min-height: 48px; }
+
+  /* FAQ */
+  .faq-section { padding: 48px 16px; }
+  .faq-q { font-size: 13px; padding: 16px 0; }
+
+  /* CONTACT */
+  .contact-block { padding: 48px 16px; }
+  .contact-h { font-size: 26px; }
+  .contact-btn { width: 100%; min-height: 48px; }
+
+  /* MISC */
+  .disclaimer-section { padding: 28px 16px; }
+  .footer { padding: 20px 16px; }
+  .footer-inner { flex-direction: column; gap: 4px; }
+
+  /* MODAL */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-width: 100%; padding: 28px 20px 36px; max-height: 92vh; overflow-y: auto; }
+  .form-grid { grid-template-columns: 1fr; }
+  .modal input, .modal select { font-size: 16px; min-height: 48px; }
+  .modal-submit { min-height: 48px; }
+
+  /* ROADMAP */
+  .rm-grid { grid-template-columns: 1fr; }
+  .rm-photo { min-height: 180px; max-height: 220px; }
+  .rm-form-side { padding: 28px 16px; }
+  .rm-h1 { font-size: 24px; }
+  .rm-form input, .rm-form select { font-size: 16px; min-height: 48px; }
+  .ty-wrap { padding: 48px 16px; }
+  .ty-card-h { font-size: 22px; }
+}

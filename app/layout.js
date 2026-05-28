@@ -119,31 +119,27 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "PRSNL Sprint",
+          name: "Full Spectrum",
           description:
-            "Self-paced personal brand playbook with team access via Slack.",
+            "We fly out to you for a 3 to 5 day shoot. High-end images, videos and lifestyle reels, distributed via our partner network.",
         },
-        price: "297",
-        priceCurrency: "EUR",
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "PRSNL Studio",
+          name: "Editing",
           description:
-            "Done-with-you content production. We edit and publish, you record.",
+            "Long-form and short-form editing of existing content, optimized for each platform.",
         },
-        price: "997",
-        priceCurrency: "EUR",
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "PRSNL Authority",
+          name: "Consulting",
           description:
-            "Done-for-you full-stack personal brand management with on-location production.",
+            "Branding, positioning and content consulting with a tailored gameplan.",
         },
       },
     ],
